@@ -43,11 +43,19 @@
 	   (unless (package-installed-p package)
 	     (package-install package)))
 	'(browse-kill-ring
-	  ido-ubiquitous
-	  magit
+	  ;ido-ubiquitous
+	  ;magit
 	  paredit
 	  smex
-	  undo-tree)))
+	  undo-tree
+	  google-c-style
+	  python-mode
+	  go-mode
+	  go-complete
+	  go-autocomplete
+	  auto-complete
+	  yasnippet
+	  ggtags)))
 
 ;;;; macros
 (defmacro after (mode &rest body)

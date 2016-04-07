@@ -1,6 +1,9 @@
 ;;; copy from http://milkbox.net/note/single-file-master-emacs-configuration/
 ;;; init.el --- Milkmacs configuration file
 
+;;source directory
+(setq source-directory "~/project/emacs")
+
 ;;format time display
 (setq display-time-24hr-format t)
 (display-time-mode t)
@@ -94,7 +97,8 @@
 
 (after 'yasnippet
   (yas-reload-all)
-  (add-hook 'c-mode-common-hook 'yas-minor-mode))
+  (add-hook 'c-mode-common-hook 'yas-minor-mode)
+  (add-hook 'go-mode-hook 'yas-minor-mode))
 
 (after "python-mode-autoloads"
   (add-to-list 'auto-mode-alist '("\.py\'" . python-mode))

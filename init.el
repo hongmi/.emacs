@@ -108,8 +108,7 @@
   (add-hook 'go-mode-hook
 	    (lambda ()
 	      (add-hook 'before-save-hook 'gofmt-before-save)
-	      (setq tab-width 4)
-	      (setq indent-tabs-mode 1))))
+	      (setq tab-width 4))))
 
 (after "go-complete-autoloads"
   (add-hook 'completion-at-point-functions 'go-complete-at-point))

@@ -42,9 +42,9 @@
   "Install only the sweetest of packages."
   (interactive)
   (package-refresh-contents)
-  (mapc '(lambda (package)
-	   (unless (package-installed-p package)
-	     (package-install package)))
+  (mapc (lambda (package)
+	  (unless (package-installed-p package)
+	    (package-install package)))
 	'(browse-kill-ring
 	  ;ido-ubiquitous
 	  ;magit

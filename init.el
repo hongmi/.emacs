@@ -46,8 +46,8 @@
 	  (unless (package-installed-p package)
 	    (package-install package)))
 	'(browse-kill-ring
-	  ;ido-ubiquitous
-	  ;magit
+	  ido-ubiquitous
+	  magit
 	  paredit
 	  smex
 	  undo-tree

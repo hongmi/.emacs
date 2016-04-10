@@ -1,2 +1,2 @@
-# .emacs
-only my .emacs inspired by milkbox
+# .emacs.d/init.el
+my init.el inspired by milkbox

@@ -28,6 +28,28 @@
 
 ;(ignore-errors (server-start))
 
+
+;; make indentation commands use space only (never tab character)
+(setq-default indent-tabs-mode nil) ; emacs 23.1, 24.2, default to t
+;; if indent-tabs-mode is t, it means it may use tab, resulting mixed space and tab
+
+;; set default tab char's display width to 4 spaces
+(setq-default tab-width 4) ; emacs 23.1, 24.2, default to 8
+
+;; set current buffer's tab char's display width to 4 spaces
+(setq tab-width 4)
+
+;; make tab key always call a indent command.
+(setq-default tab-always-indent t)
+
+;; make tab key call indent command or insert tab character, depending on cursor position
+(setq-default tab-always-indent nil)
+
+;; make tab key do indent first then completion.
+(setq-default tab-always-indent 'complete)
+
+
+
 ;;;; package.el
 (require 'package)
 (setq package-user-dir "~/.emacs.d/elpa/")
@@ -36,7 +58,7 @@
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.milkbox.net/packages/") t)
 ;; (add-to-list 'package-archives '("melpa-local" . "/Users/dcurtis/src/melpa/packages/") t)
-(package-initialize)
+;; (package-initialize)
 
 (defun mp-install-rad-packages ()
   "Install only the sweetest of packages."
@@ -53,6 +75,9 @@
 	  undo-tree
 	  google-c-style
 	  python-mode
+	  anaconda-eldoc-mode
+	  anaconda-mode
+	  rust-mode
 	  go-mode
 	  go-complete
 	  go-autocomplete
@@ -104,6 +129,10 @@
   (add-to-list 'auto-mode-alist '("\.py\'" . python-mode))
   (setq py-ipython-command-args '("--pprint" "--automagic" )))
 
+(after "anaconda-mode-autoloads"
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+
 (after "go-mode-autoloads"
   (add-hook 'go-mode-hook
 	    (lambda ()
@@ -151,9 +180,8 @@
 (add-hook 'emacs-lisp-mode-hook 'imenu-elisp-sections)
 
 
-
+;(setenv "PYTHONPATH" "/Users/hongmin/anaconda/bin/python3")
 
 
 
 ;;; init.el ends here
-

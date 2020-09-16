@@ -82,8 +82,7 @@
 	  go-complete
 	  go-autocomplete
 	  auto-complete
-	  yasnippet
-	  ggtags)))
+	  yasnippet)))
 
 ;;;; macros
 (defmacro after (mode &rest body)
@@ -147,26 +146,6 @@
 
 
 ;;after-save-hook
-(defun gtags-root-dir ()
-  "Return GTAGS root directory or nil if doesn't exist."
-  (with-temp-buffer
-    (if (zerop (call-process "global" nil t nil "-pr"))
-	(buffer-substring (point-min) (1- (point-max)))
-      nil)))
-(defun gtags-update ()
-  "Make GTAGS incremental update"
-  (call-process "global" nil nil nil "-u"))
-(defun gtags-update-hook ()
-  (when (gtags-root-dir)
-    (gtags-update)))
-
-(after "ggtags-autoloads"
-  (add-hook 'c-mode-common-hook
-	  (lambda ()
-	    (when (derived-mode-p 'c-mode)
-	      (ggtags-mode 1))))
-  (add-hook 'after-save-hook #'gtags-update-hook))
-
 (after 'auto-complete
   (ac-config-default))
 
@@ -185,3 +164,16 @@
 
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(company-anaconda yasnippet undo-tree smex rust-mode python-mode paredit magit ido-ubiquitous google-c-style go-complete go-autocomplete ggtags browse-kill-ring anaconda-mode)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
